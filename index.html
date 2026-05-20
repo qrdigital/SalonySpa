@@ -3,552 +3,325 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Salón Spa - Catálogo de Servicios</title>
+    <title>VentaLista - Spa Premium Sincronizado</title>
     <style>
+        /* Paleta de Colores Inspirada en Spa de Lujo y Bienestar */
         :root {
-            --primary-color: #d4af37; /* Dorado */
-            --dark-color: #1a1a1a;
-            --light-color: #f9f9f9;
+            --spa-primary: #2C5E43;   /* Verde Eucalipto / Elegancia y Salud */
+            --spa-gold: #D4AF37;      /* Oro Suave / Premium */
+            --spa-dark: #1A2E22;      /* Verde Oscuro Profundo para textos */
+            --spa-bg: #FDFBF7;        /* Blanco Lino / Calidez */
+            --spa-card-bg: #FFFFFF;
+            --text-muted: #5A6B5D;
         }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-color);
-            color: var(--dark-color);
-        }
-        header {
-            background-color: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 2rem 1rem;
-            border-bottom: 4px solid var(--primary-color);
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2rem;
-            letter-spacing: 2px;
-        }
-        header p {
-            margin: 0.5rem 0 0 0;
-            font-style: italic;
-            color: var(--primary-color);
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 1rem;
-        }
-        .promo-section {
-            background-color: #fff;
-            border: 2px dashed var(--primary-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-        .promo-section img {
-            cursor: pointer;
-            transition: transform 0.2s;
-        }
-        .promo-section img:hover {
-            transform: scale(1.02);
-        }
-        .promo-price {
-            font-size: 1.4rem;
-            font-weight: bold;
-            color: #c53030;
-            margin: 0.5rem 0;
-        }
-        .promo-regular {
-            text-decoration: line-through;
-            color: #666;
-            font-size: 1rem;
-            font-weight: normal;
-        }
-        .grid-cortes {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin-bottom: 1.5rem;
-        }
-        .corte-card {
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-        }
-        .corte-card img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            display: block;
-            cursor: pointer;
-            transition: opacity 0.2s;
-        }
-        .corte-card img:hover {
-            opacity: 0.9;
-        }
-        .corte-info {
-            padding: 1rem;
-            text-align: center;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .corte-info h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.1rem;
-        }
-        .corte-meta {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        .corte-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--dark-color);
-            margin-bottom: 1rem;
-        }
-        .select-btn {
-            background-color: var(--dark-color);
-            color: white;
-            border: none;
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-        }
-        .select-btn.selected {
-            background-color: var(--primary-color);
-            color: var(--dark-color);
-            font-weight: bold;
-        }
-        .personalized-row {
-            margin-bottom: 2rem;
-        }
-        .personalized-card {
-            background: #fff9e6;
-            border: 1px solid var(--primary-color);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-        .personalized-card h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.2rem;
-        }
-         
-        /* SECCIÓN DE AGENDA OPTIMIZADA E INTERACTIVA */
-        .integration-section {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .calendar-scroll-container {
-            width: 100%;
-            overflow-x: auto;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            background: #fff;
-            -webkit-overflow-scrolling: touch;
-        }
-        .calendar-wrapper {
-            width: 100%;
-            min-width: 100%;
-        }
+        
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+        body { background-color: var(--spa-bg); color: var(--spa-dark); padding: 12px; display: flex; justify-content: center; }
+        .container { max-width: 480px; width: 100%; background: var(--spa-card-bg); padding: 20px; border-radius: 16px; box-shadow: 0 6px 20px rgba(44,94,67,0.06); }
+        
+        /* Encabezado */
+        .header { text-align: center; margin-bottom: 25px; border-bottom: 1px solid #ECE9E2; padding-bottom: 15px; }
+        .header h1 { font-size: 26px; color: var(--spa-primary); font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
+        .header p { font-size: 13px; color: var(--text-muted); font-style: italic; margin-top: 4px; }
 
-        .maps-section {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            text-align: center;
-        }
-        .politicas-box {
-            background-color: #fff5f5;
-            border-left: 4px solid #e53e3e;
-            padding: 1rem 1.5rem;
-            border-radius: 0 8px 8px 0;
-            margin-bottom: 2rem;
-        }
-        .politicas-box h3 {
-            margin: 0 0 0.5rem 0;
-            color: #c53030;
-        }
-        .politicas-box ul {
-            margin: 0;
-            padding-left: 1.2rem;
-        }
-        .politicas-box li {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
-        .booking-box {
-            background-color: #fff;
-            border: 2px solid var(--dark-color);
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-        .form-group {
-            margin-bottom: 1rem;
-            text-align: left;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        .form-group select, .form-group input {
-            width: 100%;
-            padding: 0.7rem;
-            border-radius: 4px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            box-sizing: border-box;
-            font-size: 0.9rem;
-        }
-        .form-row {
-            display: flex;
-            gap: 1rem;
-            margin-bottom: 1rem;
-        }
-        .form-row .form-group {
-            flex: 1;
-            margin-bottom: 0;
-        }
-        .whatsapp-btn {
-            display: block;
-            background-color: #25D366;
-            color: white;
-            text-decoration: none;
-            padding: 1rem;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-top: 1rem;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+        /* Promoción del Mes Seleccionable (Tu requerimiento) */
+        .promo-card { background: linear-gradient(135deg, var(--spa-primary), #1E422E); padding: 18px; border-radius: 12px; margin-bottom: 25px; color: #fff; text-align: center; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; }
+        .promo-card:hover { border-color: var(--spa-gold); }
+        .promo-card.selected { border: 2px solid var(--spa-gold); box-shadow: 0 4px 15px rgba(212,175,55,0.3); background: linear-gradient(135deg, #1E422E, #142D1F); }
+        .promo-card h3 { font-size: 15px; font-weight: 500; letter-spacing: 2px; color: var(--spa-gold); margin-bottom: 6px; text-transform: uppercase; }
+        .promo-card .service-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+        .promo-card .price { font-size: 22px; font-weight: bold; color: var(--spa-gold); }
+        .promo-card .validity { font-size: 11px; opacity: 0.7; margin-top: 6px; font-weight: 300; }
 
-        /* ESTILOS PARA LA VENTANA MODAL (ZOOM DE FOTOS) */
-        .modal-zoom {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.85);
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .modal-zoom.show {
-            display: flex;
-            opacity: 1;
-        }
-        .modal-zoom-content {
-            max-width: 90%;
-            max-height: 85%;
-            border-radius: 4px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-        }
-        .modal-zoom.show .modal-zoom-content {
-            transform: scale(1);
-        }
-        .modal-zoom-close {
-            position: absolute;
-            top: 20px;
-            right: 25px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            cursor: pointer;
-            user-select: none;
-        }
+        .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 25px 0 12px 0; color: var(--spa-primary); border-bottom: 1px solid #ECE9E2; padding-bottom: 6px; }
 
-        @media (max-width: 580px) {
-            .grid-cortes {
-                grid-template-columns: 1fr;
-            }
-        }
+        /* Catálogo de Servicios (3 filas x 2 columnas = 6 servicios) */
+        .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
+        .service-card { border: 1px solid #E2DEC6; border-radius: 10px; overflow: hidden; background: #fff; display: flex; flex-direction: column; cursor: pointer; transition: all 0.2s ease; }
+        .service-card:hover { border-color: var(--spa-primary); }
+        .service-card.selected { border: 2px solid var(--spa-primary); background-color: #F6F8F6; box-shadow: 0 4px 12px rgba(44,94,67,0.08); }
+        
+        .service-img-container { width: 100%; height: 110px; background-color: #EAE7DC; position: relative; overflow: hidden; }
+        .service-img-container img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .service-info { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .service-name { font-size: 13px; font-weight: 600; color: var(--spa-dark); line-height: 1.4; }
+        .service-meta { font-size: 13px; color: var(--spa-primary); font-weight: 700; margin-top: 6px; display: flex; justify-content: space-between; align-items: center; }
+        .service-duration { font-size: 10px; color: var(--text-muted); font-weight: 400; }
+
+        /* Opción de Asesoramiento */
+        .custom-option { border: 1px solid #E2DEC6; padding: 14px; border-radius: 10px; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 1px; cursor: pointer; background: #fff; margin-bottom: 25px; color: var(--spa-primary); transition: all 0.2s; text-transform: uppercase; }
+        .custom-option:hover { background-color: #F6F8F6; }
+        .custom-option.selected { border: 2px solid var(--spa-gold); background-color: #FFFDF9; color: var(--spa-dark); }
+
+        /* Formulario de Pre-Reserva */
+        .form-group { margin-bottom: 14px; }
+        label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 5px; color: var(--spa-dark); text-transform: uppercase; letter-spacing: 0.5px; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #D4CFC1; border-radius: 8px; font-size: 14px; background: #fff; color: var(--spa-dark); outline: none; transition: border 0.2s; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+        
+        /* Flecha personalizada para el select dado que quitamos los estilos nativos */
+        .select-wrapper { position: relative; }
+        .select-wrapper::after { content: '▼'; font-size: 10px; color: var(--spa-primary); position: absolute; right: 15px; top: 16px; pointer-events: none; }
+        
+        input:focus, select:focus { border-color: var(--spa-primary); }
+        
+        .notice-box { background-color: #F4F2EB; border-left: 3px solid var(--spa-gold); padding: 10px; font-size: 11px; color: var(--spa-dark); margin-bottom: 15px; border-radius: 0 6px 6px 0; line-height: 1.5; }
+
+        /* Botón de WhatsApp */
+        .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background-color: #25D366; color: white; border: none; padding: 15px; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25); margin-top: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .btn-whatsapp:hover { background-color: #128C7E; }
+
+        .policies { font-size: 11px; color: var(--text-muted); margin-top: 25px; padding: 12px; background: #FDFBF7; border: 1px solid #ECE9E2; border-radius: 8px; line-height: 1.5; }
+
+        /* Ubicación */
+        .location-section { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ECE9E2; }
+        .location-section p { font-size: 13px; color: var(--spa-dark); font-weight: 500; }
+        .btn-maps { display: inline-block; margin-top: 10px; color: var(--spa-primary); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-decoration: none; border: 1px solid var(--spa-primary); padding: 8px 16px; border-radius: 6px; background: #fff; transition: all 0.2s; text-transform: uppercase; }
+        .btn-maps:hover { background-color: var(--spa-primary); color: #fff; }
+
+        /* MODAL DE IMÁGENES ZOOM */
+        .modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26,46,34,0.9); justify-content: center; align-items: center; padding: 16px; }
+        .modal img { max-width: 100%; max-height: 75vh; border-radius: 8px; box-shadow: 0 4px 25px rgba(0,0,0,0.5); border: 2px solid var(--spa-gold); }
+        .modal-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 36px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Salon Spa Tu Nombre</h1>
-        <p>Tu Slogan Aquí</p>
-    </header>
+<div class="container">
+    
+    <div class="header">
+        <h1>Nuestra Belleza Spa</h1>
+        <p>Tu espacio de paz, relajación y bienestar</p>
+    </div>
 
-    <div class="container">
+    <div class="promo-card" id="card-promo" onclick="selectFromCard('card-promo', 'Oferta Especial: Ritual de Spa Facial Renovador + Masaje - S/ 120.00')">
+        <h3>✦ Oferta del Mes Seleccionable ✦</h3>
+        <div class="service-title">Ritual de Spa Facial Renovador + Masaje</div>
+        <div class="price">S/ 120.00</div>
+        <div class="validity">Cupos limitados • Válido hasta el 31 de mayo</div>
+    </div>
 
-        <div class="promo-section">
-            <h2>Promoción del Mes</h2>
-            <img src="imagen7.jpg" alt="Promoción Corte Long Bob" style="width: 100%; max-width: 400px; height: auto; border-radius: 4px; margin-bottom: 1rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1);" onclick="ampliarImagen(this)">
-            <h3>Corte Long Bob + Lavado</h3>
-            <div class="promo-price">S/ 120.00 <span class="promo-regular">(Precio regular S/ 200.00)</span></div>
-            <p style="font-weight: bold; color: var(--primary-color);">✨ Oferta válida hasta el 31 de mayo de 2026</p>
-        </div>
-
-        <h2>Paso 1: Selecciona tu Servicio</h2>
-        <div class="grid-cortes">
-            
-            <div class="corte-card">
-                <img src="imagen1.jpg" alt="Corte Bob Clásico" onclick="ampliarImagen(this)">
-                <div class="corte-info">
-                    <h3>Corte Bob Clásico</h3>
-                    <div class="corte-meta">🕒 ~ 45 min</div>
-                    <div class="corte-price">S/ 160.00</div>
-                    <button class="select-btn" onclick="seleccionarServicio('Corte Bob Clásico', this)">Seleccionar</button>
-                </div>
+    <div class="section-title">Paso 1: Selecciona tu Tratamiento</div>
+    
+    <div class="services-grid">
+        <div class="service-card" id="card-1" onclick="selectFromCard('card-1', 'Limpieza Facial Profunda - S/ 70.00')">
+            <div class="service-img-container">
+                <img src="imagen1.jpg" alt="Facial" onclick="openModal(this.src, event)">
             </div>
-
-            <div class="corte-card">
-                <img src="imagen2.jpg" alt="Corte en Capas Definidas" onclick="ampliarImagen(this)">
-                <div class="corte-info">
-                    <h3>Corte en Capas Definidas</h3>
-                    <div class="corte-meta">🕒 ~ 1h 30 min</div>
-                    <div class="corte-price">S/ 180.00</div>
-                    <button class="select-btn" onclick="seleccionarServicio('Corte en Capas Definidas', this)">Seleccionar</button>
-                </div>
-            </div>
-
-            <div class="corte-card">
-                <img src="imagen3.jpg" alt="Corte Pixie Vanguardista" onclick="ampliarImagen(this)">
-                <div class="corte-info">
-                    <h3>Corte Pixie Vanguardista</h3>
-                    <div class="corte-meta">🕒 ~ 45 min</div>
-                    <div class="corte-price">S/ 170.00</div>
-                    <button class="select-btn" onclick="seleccionarServicio('Corte Pixie Vanguardista', this)">Seleccionar</button>
-                </div>
-            </div>
-
-            <div class="corte-card">
-                <img src="imagen4.jpg" alt="Corte Recto con Flequillo" onclick="ampliarImagen(this)">
-                <div class="corte-info">
-                    <h3>Corte Recto con Flequillo</h3>
-                    <div class="corte-meta">🕒 ~ 45 min</div>
-                    <div class="corte-price">S/ 150.00</div>
-                    <button class="select-btn" onclick="seleccionarServicio('Corte Recto con Flequillo', this)">Seleccionar</button>
-                </div>
-            </div>
-
-            <div class="corte-card">
-                <img src="imagen5.jpg" alt="Corte Shag / Desfilado" onclick="ampliarImagen(this)">
-                <div class="corte-info">
-                    <h3>Corte Shag / Desfilado</h3>
-                    <div class="corte-meta">🕒 ~ 1h 30 min</div>
-                    <div class="corte-price">S/ 185.00</div>
-                    <button class="select-btn" onclick="seleccionarServicio('Corte Shag / Desfilado', this)">Seleccionar</button>
-                </div>
-            </div>
-
-            <div class="corte-card">
-                <img src="imagen6.jpg" alt="Corte de Puntas y Mantenimiento" onclick="ampliarImagen(this)">
-                <div class="corte-info">
-                    <h3>Corte de Puntas y Mantenimiento</h3>
-                    <div class="corte-meta">🕒 ~ 45 min</div>
-                    <div class="corte-price">S/ 140.00</div>
-                    <button class="select-btn" onclick="seleccionarServicio('Corte de Puntas y Mantenimiento', this)">Seleccionar</button>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="personalized-row">
-            <div class="personalized-card">
-                <h3>✨ Servicio Personalizado</h3>
-                <p class="corte-meta" style="margin-bottom: 0.5rem;">🕒 Tiempo aproximado según previa evaluación</p>
-                <div class="corte-price" style="color: #b7791f; margin-bottom: 1rem;">Precio según evaluación</div>
-                <button class="select-btn" style="max-width: 250px; margin: 0 auto;" onclick="seleccionarServicio('Servicio Personalizado', this)">Seleccionar</button>
+            <div class="service-info">
+                <div class="service-name">Limpieza Facial Profunda</div>
+                <div class="service-meta">S/ 70.00 <span class="service-duration">45 min</span></div>
             </div>
         </div>
 
-        <div class="integration-section">
-            <h2>Paso 2: Revisa las disponibilidades en tiempo real</h2>
-            <p style="color: #555; margin-bottom: 1.5rem; font-size: 0.95rem;">Revisa abajo las horas libres de nuestro salón. Luego indícanos tu elección en el Paso 3 para procesar tu solicitud.</p>
-            
-            <div class="calendar-scroll-container">
-                <div class="calendar-wrapper">
-                    <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ39Bbs8sv5XF6rEONMYVaEuOIG7eONvDA4z8r7DeZK8VP0WGglPLmqe_m5F6pdxRANs0efMa9WJ?gv=true" style="border: 0" width="100%" height="650" frameborder="0"></iframe>
-                    </div>
+        <div class="service-card" id="card-2" onclick="selectFromCard('card-2', 'Masaje Descontracturante - S/ 80.00')">
+            <div class="service-img-container">
+                <img src="imagen2.jpg" alt="Masaje" onclick="openModal(this.src, event)">
+            </div>
+            <div class="service-info">
+                <div class="service-name">Masaje Descontracturante</div>
+                <div class="service-meta">S/ 80.00 <span class="service-duration">60 min</span></div>
             </div>
         </div>
 
-        <div class="maps-section">
-            <h2>Nuestra Ubicación</h2>
-            <p>Revisa aquí cómo llegar a nuestro local principal:</p>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3900.2223708304915!2d-77.0188094!3d-12.1648039!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105b9d20096bc83%3A0xd6626e126b1b36ef!2sC.%20Ontario%20191%2C%20Chorrillos%2015056!5e0!3m2!1ses-419!2spe!4v1716123456789!5m2!1ses-419!2spe" width="100%" height="450" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div>
-
-        <div class="politicas-box">
-            <h3>⚠️ Políticas Importantes de Reserva</h3>
-            <ul>
-                <li><strong>Abono inicial:</strong> Para separar tu cita se requiere un abono obligatorio de 50 soles.</li>
-                <li><strong>Puntualidad:</strong> Se recomienda asistir 10 minutos antes. La tolerancia máxima de espera es de 10 minutes.</li>
-                <li><strong>Inasistencias:</strong> En caso de inasistencia o llegar tarde pasado el tiempo de tolerancia, no habrá reembolso del depósito.</li>
-                <li><strong>Acompañantes:</strong> Por comodidad de espacio y bioseguridad, se solicita asistir de preferencia individualmente y no se recomienda venir con niños.</li>
-            </ul>
-        </div>
-
-        <div class="booking-box">
-            <h2>Paso 3: Envía tu Selección por WhatsApp</h2>
-            <p style="font-size: 0.9rem; color: #666; margin-top: 0;">Confirma tus datos ingresados en la agenda para generar tu link de pre-reserva.</p>
-            
-            <div class="form-group">
-                <label>Tu Nombre y Apellido:</label>
-                <input type="text" id="nombre-input" placeholder="Escribe tu nombre completo" oninput="actualizarEnlace()">
+        <div class="service-card" id="card-3" onclick="selectFromCard('card-3', 'Corte de Cabello Dama - S/ 60.00')">
+            <div class="service-img-container">
+                <img src="imagen3.jpg" alt="Corte" onclick="openModal(this.src, event)">
             </div>
+            <div class="service-info">
+                <div class="service-name">Corte de Cabello Dama</div>
+                <div class="service-meta">S/ 60.00 <span class="service-duration">40 min</span></div>
+            </div>
+        </div>
 
-            <div class="form-group">
-                <label>Servicio Seleccionado:</label>
-                <select id="servicio-select" onchange="actualizarEnlace()">
-                    <option value="">-- Selecciona un servicio --</option>
-                    <option value="Corte Long Bob (Oferta)">Corte Long Bob (Oferta del Mes) - S/ 120.00</option>
-                    <option value="Corte Bob Clásico">Corte Bob Clásico - S/ 160.00</option>
-                    <option value="Corte en Capas Definidas">Corte en Capas Definidas - S/ 180.00</option>
-                    <option value="Corte Pixie Vanguardista">Corte Pixie Vanguardista - S/ 170.00</option>
-                    <option value="Corte Recto con Flequillo">Corte Recto con Flequillo - S/ 150.00</option>
-                    <option value="Corte Shag / Desfilado">Corte Shag / Desfilado - S/ 185.00</option>
-                    <option value="Corte de Puntas y Mantenimiento">Corte de Puntas y Mantenimiento - S/ 140.00</option>
-                    <option value="Servicio Personalizado">Servicio Personalizado - Previa evaluación</option>
+        <div class="service-card" id="card-4" onclick="selectFromCard('card-4', 'Manicure + Pedicure Spa - S/ 50.00')">
+            <div class="service-img-container">
+                <img src="imagen4.jpg" alt="Uñas" onclick="openModal(this.src, event)">
+            </div>
+            <div class="service-info">
+                <div class="service-name">Manicure + Pedicure Spa</div>
+                <div class="service-meta">S/ 50.00 <span class="service-duration">50 min</span></div>
+            </div>
+        </div>
+
+        <div class="service-card" id="card-5" onclick="selectFromCard('card-5', 'Terapia Capilar Hidratante - S/ 90.00')">
+            <div class="service-img-container">
+                <img src="imagen5.jpg" alt="Terapia Capilar" onclick="openModal(this.src, event)">
+            </div>
+            <div class="service-info">
+                <div class="service-name">Terapia Capilar Hidratante</div>
+                <div class="service-meta">S/ 90.00 <span class="service-duration">45 min</span></div>
+            </div>
+        </div>
+
+        <div class="service-card" id="card-6" onclick="selectFromCard('card-6', 'Depilación Cera Confort - S/ 45.00')">
+            <div class="service-img-container">
+                <img src="imagen6.jpg" alt="Depilación" onclick="openModal(this.src, event)">
+            </div>
+            <div class="service-info">
+                <div class="service-name">Depilación Cera Sistema Confort</div>
+                <div class="service-meta">S/ 45.00 <span class="service-duration">30 min</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="custom-option" id="card-custom" onclick="selectFromCard('card-custom', 'Requiere Asesoramiento Personalizado')">
+        ✨ Requiero Asesoramiento / Otro Servicio
+    </div>
+
+    <div class="section-title">Paso 2: Confirmación de Reserva</div>
+    
+    <form id="reservaForm">
+        <div class="form-group">
+            <label for="servicioSelect">Tratamiento Seleccionado</label>
+            <div class="select-wrapper">
+                <select id="servicioSelect" onchange="selectFromDropdown(this.value)" required>
+                    <option value="" disabled selected>-- Selecciona o cambia tu opción aquí --</option>
+                    <option value="Oferta Especial: Ritual de Spa Facial Renovador + Masaje - S/ 120.00">✦ Oferta del Mes: Ritual + Masaje — S/ 120.00</option>
+                    <option value="Limpieza Facial Profunda - S/ 70.00">Limpieza Facial Profunda — S/ 70.00</option>
+                    <option value="Masaje Descontracturante - S/ 80.00">Masaje Descontracturante — S/ 80.00</option>
+                    <option value="Corte de Cabello Dama - S/ 60.00">Corte de Cabello Dama — S/ 60.00</option>
+                    <option value="Manicure + Pedicure Spa - S/ 50.00">Manicure + Pedicure Spa — S/ 50.00</option>
+                    <option value="Terapia Capilar Hidratante - S/ 90.00">Terapia Capilar Hidratante — S/ 90.00</option>
+                    <option value="Depilación Cera Confort - S/ 45.00">Depilación Cera Sistema Confort — S/ 45.00</option>
+                    <option value="Requiere Asesoramiento Personalizado">✨ Requiere Asesoramiento Personalizado / Otro</option>
                 </select>
             </div>
-
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Fecha elegida en la agenda:</label>
-                    <input type="date" id="fecha-input" onchange="actualizarEnlace()">
-                </div>
-                <div class="form-group">
-                    <label>Hora elegida en la agenda:</label>
-                    <select id="hora-input" onchange="actualizarEnlace()">
-                        <option value="">-- Selecciona hora --</option>
-                        <option value="09:00 AM">09:00 AM</option>
-                        <option value="10:00 AM">10:00 AM</option>
-                        <option value="11:00 AM">11:00 AM</option>
-                        <option value="12:00 PM">12:00 PM</option>
-                        <option value="01:00 PM">01:00 PM</option>
-                        <option value="02:00 PM">02:00 PM</option>
-                        <option value="03:00 PM">03:00 PM</option>
-                        <option value="04:00 PM">04:00 PM</option>
-                        <option value="05:00 PM">05:00 PM</option>
-                        <option value="06:00 PM">06:00 PM</option>
-                        <option value="07:00 PM">07:00 PM</option>
-                        <option value="08:00 PM">08:00 PM</option>
-                    </select>
-                </div>
-            </div>
-
-            <a id="whatsapp-link" href="javascript:void(0);" target="_blank" class="whatsapp-btn" onclick="return validarEnvio()">
-                Por favor selecciona tu servicio
-            </a>
         </div>
 
+        <div class="form-group">
+            <label for="nombre">Tu Nombre y Apellido *</label>
+            <input type="text" id="nombre" placeholder="Ej. María García" required>
+        </div>
+
+        <div class="form-group">
+            <label for="fecha">Propuesta de Fecha *</label>
+            <input type="date" id="fecha" required>
+        </div>
+
+        <div class="form-group">
+            <label for="hora">Turno Preferente *</label>
+            <div class="select-wrapper">
+                <select id="hora" required>
+                    <option value="" disabled selected>-- Elige un bloque de horario --</option>
+                    <option value="Mañana (09:00 AM - 12:00 PM)">Mañana (09:00 AM - 12:00 PM)</option>
+                    <option value="Mediodía (12:00 PM - 03:00 PM)">Mediodía (12:00 PM - 03:00 PM)</option>
+                    <option value="Tarde (03:00 PM - 06:00 PM)">Tarde (03:00 PM - 06:00 PM)</option>
+                    <option value="Noche (06:00 PM - 08:00 PM)">Noche (06:00 PM - 08:00 PM)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="notice-box">
+            ✦ <strong>Pre-Reserva:</strong> Tu espacio se encuentra sujeto a verificación de agenda. Te responderemos de inmediato confirmando el horario por chat.
+        </div>
+
+        <button type="button" class="btn-whatsapp" onclick="enviarPreReserva()">
+            Solicitar Reserva por WhatsApp
+        </button>
+    </form>
+
+    <div class="policies">
+        <strong>Políticas del Salón:</strong><br>
+        • Agradecemos tu puntualidad (tolerancia máxima de 15 min).<br>
+        • Las reservas se validan de forma definitiva tras coordinar el abono de seguridad por el chat.
     </div>
 
-    <div id="modalZoom" class="modal-zoom" onclick="cerrarImagen()">
-        <span class="modal-zoom-close">×</span>
-        <img class="modal-zoom-content" id="imgAmpliada">
+    <div class="location-section">
+        <p>📍 Calle Ontario 191, Chorrillos</p>
+        <a href="https://maps.app.goo.gl/pWFCdEtp9Bqn1K61A" target="_blank" class="btn-maps">🗺️ CÓMO LLEGAR EN MAPS</a>
     </div>
 
-    <script>
-        const celular = "51928644516"; 
+</div>
 
-        function ampliarImagen(elemento) {
-            const modal = document.getElementById("modalZoom");
-            const imgAmpliada = document.getElementById("imgAmpliada");
-            
-            imgAmpliada.src = elemento.src;
-            modal.classList.add("show");
-        }
+<div class="modal" id="imageModal" onclick="closeModal()">
+    <span class="modal-close">×</span>
+    <img id="modalImg" src="" alt="Vista Premium">
+</div>
 
-        function cerrarImagen() {
-            const modal = document.getElementById("modalZoom");
-            modal.classList.remove("show");
-        }
+<script>
+// Mapeo global para conectar los valores del select con los IDs visuales de las tarjetas
+const valueToIdMap = {
+    "Oferta Especial: Ritual de Spa Facial Renovador + Masaje - S/ 120.00": "card-promo",
+    "Limpieza Facial Profunda - S/ 70.00": "card-1",
+    "Masaje Descontracturante - S/ 80.00": "card-2",
+    "Corte de Cabello Dama - S/ 60.00": "card-3",
+    "Manicure + Pedicure Spa - S/ 50.00": "card-4",
+    "Terapia Capilar Hidratante - S/ 90.00": "card-5",
+    "Depilación Cera Confort - S/ 45.00": "card-6",
+    "Requiere Asesoramiento Personalizado": "card-custom"
+};
 
-        function seleccionarServicio(nombreServicio, boton) {
-            document.querySelectorAll('.select-btn').forEach(btn => btn.classList.remove('selected'));
-            if(boton) boton.classList.add('selected');
-            
-            document.getElementById('servicio-select').value = nombreServicio;
-            actualizarEnlace();
-        }
+// Vía de actualización 1: El usuario presiona una tarjeta arriba
+function selectFromCard(cardId, valorServicio) {
+    clearVisualSelection();
+    
+    // Marcar visualmente la tarjeta elegida
+    document.getElementById(cardId).classList.add('selected');
+    
+    // Sincronizar el valor dentro del menú desplegable
+    document.getElementById('servicioSelect').value = valorServicio;
+}
 
-        function formatarFecha(fechaString) {
-            if (!fechaString) return "";
-            const partes = fechaString.split('-');
-            return `${partes[2]}/${partes[1]}/${partes[0]}`;
-        }
+// Vía de actualización 2: El usuario cambia el valor directamente desde el menú desplegable
+function selectFromDropdown(valorSeleccionado) {
+    clearVisualSelection();
+    
+    // Buscar qué tarjeta corresponde a ese valor y marcarla
+    const targetCardId = valueToIdMap[valorSeleccionado];
+    if (targetCardId) {
+        document.getElementById(targetCardId).classList.add('selected');
+    }
+}
 
-        function actualizarEnlace() {
-            const nombre = document.getElementById('nombre-input').value.trim();
-            const servicio = document.getElementById('servicio-select').value;
-            const fecha = document.getElementById('fecha-input').value;
-            const hora = document.getElementById('hora-input').value;
-            const btnWsp = document.getElementById('whatsapp-link');
+// Función auxiliar para limpiar los bordes activos de todo el catálogo
+function clearVisualSelection() {
+    document.getElementById('card-promo').classList.remove('selected');
+    document.getElementById('card-custom').classList.remove('selected');
+    document.querySelectorAll('.service-card').forEach(card => card.classList.remove('selected'));
+}
 
-            if (servicio) {
-                btnWsp.innerText = `Prereservar por WhatsApp`;
-                
-                let mensaje = `Hola, acabo de revisar las disponibilidades en la agenda web y deseo solicitar una *PRE-RESERVA* de mi cita.%0A%0A`;
-                
-                if (nombre) {
-                    mensaje += `*Nombre:* ${nombre}%0A`;
-                }
-                mensaje += `*Servicio:* ${servicio}%0A`;
-                
-                if (fecha && hora) {
-                    mensaje += `*Fecha:* ${formatarFecha(fecha)}%0A*Hora:* ${hora}%0A`;
-                }
-                
-                mensaje += `%0AEntiendo que el siguiente paso para programar formalmente mi cita es realizar el abono de S/ 50 soles. Quedo atenta a los datos de cuenta o QR de Yape/Plin.`;
+function openModal(src, event) {
+    event.stopPropagation(); // Evita activar la selección de la tarjeta al hacer zoom
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImg');
+    modal.style.display = 'flex';
+    modalImg.src = src;
+}
 
-                const textoMensaje = encodeURIComponent(mensaje);
-                btnWsp.href = `https://wa.me/${celular}?text=${textoMensaje}`;
-            } else {
-                btnWsp.innerText = "Por favor selecciona tu servicio";
-                btnWsp.href = "javascript:void(0);";
-            }
-        }
+function closeModal() {
+    document.getElementById('imageModal').style.display = 'none';
+}
 
-        function validarEnvio() {
-            const nombre = document.getElementById('nombre-input').value.trim();
-            const servicio = document.getElementById('servicio-select').value;
-            const fecha = document.getElementById('fecha-input').value;
-            const hora = document.getElementById('hora-input').value;
+function enviarPreReserva() {
+    const form = document.getElementById('reservaForm');
+    const servicio = document.getElementById('servicioSelect').value;
+    
+    if (!servicio) {
+        alert("Por favor, selecciona un tratamiento o la opción de asesoramiento.");
+        return;
+    }
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
 
-            if (!nombre) {
-                alert("Por favor, ingresa tu Nombre y Apellido para validar la pre-reserva.");
-                return false;
-            }
-            if (!servicio) {
-                alert("Por favor, selecciona tu servicio antes de enviar.");
-                return false;
-            }
-            if (!fecha || !hora) {
-                alert("Por favor, selecciona la fecha y hora que viste libre en la agenda.");
-                return false;
-            }
-            return true;
-        }
-    </script>
+    const nombre = document.getElementById('nombre').value;
+    const fecha = document.getElementById('fecha').value;
+    const hora = document.getElementById('hora').value;
+
+    const telefonoSpa = "51928644516"; // Número de WhatsApp real del comercio
+    
+    const mensaje = `Hola, acabo de enviar una solicitud desde tu VentaLista:\n\n` +
+                    `👤 *Cliente:* ${nombre}\n` +
+                    `💆‍♀️ *Opción:* ${servicio}\n` +
+                    `📅 *Fecha Tentativa:* ${fecha}\n` +
+                    `🕒 *Bloque Horario:* ${hora}\n\n` +
+                    `¿Me confirman si tienen disponibilidad para este turno?`;
+
+    window.location.href = `https://api.whatsapp.com/send?phone=${telefonoSpa}&text=${encodeURIComponent(mensaje)}`;
+}
+</script>
+
 </body>
 </html>
