@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VentaLista - Spa Premium Sincronizado</title>
-        <style>
+    
+    <link rel="icon" type="image/png" href="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
+    <link rel="apple-touch-icon" href="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
+
+    <style>
         /* Paleta de Colores Inspirada en Spa de Lujo y Bienestar */
         :root {
             --spa-primary: #2C5E43;   /* Verde Eucalipto / Elegancia y Salud */
@@ -24,7 +28,7 @@
         .header h1 { font-size: 26px; color: var(--spa-primary); font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
         .header p { font-size: 13px; color: var(--text-muted); font-style: italic; margin-top: 4px; }
 
-        /* Promoción del Mes Seleccionable (Tu requerimiento) */
+        /* Promoción del Mes Seleccionable */
         .promo-card { background: linear-gradient(135deg, var(--spa-primary), #1E422E); padding: 18px; border-radius: 12px; margin-bottom: 25px; color: #fff; text-align: center; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; }
         .promo-card:hover { border-color: var(--spa-gold); }
         .promo-card.selected { border: 2px solid var(--spa-gold); box-shadow: 0 4px 15px rgba(212,175,55,0.3); background: linear-gradient(135deg, #1E422E, #142D1F); }
@@ -35,7 +39,7 @@
 
         .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 25px 0 12px 0; color: var(--spa-primary); border-bottom: 1px solid #ECE9E2; padding-bottom: 6px; }
 
-        /* Catálogo de Servicios (3 filas x 2 columnas = 6 servicios) */
+        /* Catálogo de Servicios */
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
         .service-card { border: 1px solid #E2DEC6; border-radius: 10px; overflow: hidden; background: #fff; display: flex; flex-direction: column; cursor: pointer; transition: all 0.2s ease; }
         .service-card:hover { border-color: var(--spa-primary); }
@@ -59,7 +63,7 @@
         label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 5px; color: var(--spa-dark); text-transform: uppercase; letter-spacing: 0.5px; }
         input, select { width: 100%; padding: 12px; border: 1px solid #D4CFC1; border-radius: 8px; font-size: 14px; background: #fff; color: var(--spa-dark); outline: none; transition: border 0.2s; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
         
-        /* Flecha personalizada para el select dado que quitamos los estilos nativos */
+        /* Flecha personalizada para el select */
         .select-wrapper { position: relative; }
         .select-wrapper::after { content: '▼'; font-size: 10px; color: var(--spa-primary); position: absolute; right: 15px; top: 16px; pointer-events: none; }
         
@@ -227,10 +231,10 @@
         • Las reservas se validan de forma definitiva tras coordinar el abono de seguridad por el chat.
     </div>
 
-   <div class="location-section">
-    <p>📍 Calle Ontario 191, Chorrillos</p>
-    <a href="https://www.google.com/maps/search/?api=1&query=Calle+Ontario+191,+Chorrillos,+Lima" target="_blank" class="btn-maps">🗺️ CÓMO LLEGAR EN MAPS</a>
-</div>
+    <div class="location-section">
+        <p>📍 Calle Ontario 191, Chorrillos</p>
+        <a href="https://maps.google.com/?q=Calle+Ontario+191,+Chorrillos" target="_blank" class="btn-maps">🗺️ CÓMO LLEGAR EN MAPS</a>
+    </div>
 
 </div>
 
@@ -240,7 +244,6 @@
 </div>
 
 <script>
-// Mapeo global para conectar los valores del select con los IDs visuales de las tarjetas
 const valueToIdMap = {
     "Oferta Especial: Ritual de Spa Facial Renovador + Masaje - S/ 120.00": "card-promo",
     "Limpieza Facial Profunda - S/ 70.00": "card-1",
@@ -252,29 +255,20 @@ const valueToIdMap = {
     "Requiere Asesoramiento Personalizado": "card-custom"
 };
 
-// Vía de actualización 1: El usuario presiona una tarjeta arriba
 function selectFromCard(cardId, valorServicio) {
     clearVisualSelection();
-    
-    // Marcar visualmente la tarjeta elegida
     document.getElementById(cardId).classList.add('selected');
-    
-    // Sincronizar el valor dentro del menú desplegable
     document.getElementById('servicioSelect').value = valorServicio;
 }
 
-// Vía de actualización 2: El usuario cambia el valor directamente desde el menú desplegable
 function selectFromDropdown(valorSeleccionado) {
     clearVisualSelection();
-    
-    // Buscar qué tarjeta corresponde a ese valor y marcarla
     const targetCardId = valueToIdMap[valorSeleccionado];
     if (targetCardId) {
         document.getElementById(targetCardId).classList.add('selected');
     }
 }
 
-// Función auxiliar para limpiar los bordes activos de todo el catálogo
 function clearVisualSelection() {
     document.getElementById('card-promo').classList.remove('selected');
     document.getElementById('card-custom').classList.remove('selected');
@@ -282,7 +276,7 @@ function clearVisualSelection() {
 }
 
 function openModal(src, event) {
-    event.stopPropagation(); // Evita activar la selección de la tarjeta al hacer zoom
+    event.stopPropagation();
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImg');
     modal.style.display = 'flex';
@@ -309,8 +303,7 @@ function enviarPreReserva() {
     const nombre = document.getElementById('nombre').value;
     const fecha = document.getElementById('fecha').value;
     const hora = document.getElementById('hora').value;
-
-    const telefonoSpa = "51928644516"; // Número de WhatsApp real del comercio
+    const telefonoSpa = "51928644516";
     
     const mensaje = `Hola, acabo de enviar una solicitud desde tu VentaLista:\n\n` +
                     `👤 *Cliente:* ${nombre}\n` +
