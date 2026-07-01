@@ -3,47 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VentaLista - Spa Premium Sincronizado</title>
-    <!-- Etiquetas Meta Open Graph para la vista previa en WhatsApp -->
-<meta property="og:title" content="VentaLista | Spa Premium Sincronizado">
-<meta property="og:description" content="Tus clientes no deberían preguntar. Deberían comprar.">
-<meta property="og:image" content="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
-<meta property="og:image:type" content="image/png">
-<meta property="og:image:width" content="300">
-<meta property="og:image:height" content="300">
-<meta property="og:url" content="https://qrdigital.github.io/dulcecapitas/">
-<meta property="og:type" content="website">
+    <title>VentaLista - Módulo Demo Agendamiento</title>
+    <!-- Etiquetas Meta Open Graph optimizadas para prospección -->
+    <meta property="og:title" content="VentaLista | Demo Automatización WhatsApp">
+    <meta property="og:description" content="Tus clientes no deberían preguntar. Deberían comprar.">
+    <meta property="og:image" content="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:width" content="300">
+    <meta property="og:image:height" content="300">
+    <meta property="og:url" content="https://qrdigital.github.io/dulcecapitas/">
+    <meta property="og:type" content="website">
     <link rel="icon" type="image/png" href="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
     <link rel="apple-touch-icon" href="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
 
     <style>
-        /* Paleta de Colores Inspirada en Spa de Lujo y Bienestar */
+        /* Paleta de Colores Corporativa y Profesional */
         :root {
-            --spa-primary: #2C5E43;   /* Verde Eucalipto / Elegancia y Salud */
-            --spa-gold: #D4AF37;      /* Oro Suave / Premium */
-            --spa-dark: #1A2E22;      /* Verde Oscuro Profundo para textos */
-            --spa-bg: #FDFBF7;        /* Blanco Lino / Calidez */
+            --spa-primary: #1E422E;   /* Verde Oscuro / Estructura Limpia */
+            --spa-gold: #D4AF37;      /* Oro Suave / Indicador de Selección */
+            --spa-dark: #111E16;      /* Texto de Alta Lectura */
+            --spa-bg: #F9F8F5;        /* Fondo Neutro Minimalista */
             --spa-card-bg: #FFFFFF;
             --text-muted: #5A6B5D;
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: var(--spa-bg); color: var(--spa-dark); padding: 12px; display: flex; justify-content: center; }
-        .container { max-width: 480px; width: 100%; background: var(--spa-card-bg); padding: 20px; border-radius: 16px; box-shadow: 0 6px 20px rgba(44,94,67,0.06); }
+        .container { max-width: 480px; width: 100%; background: var(--spa-card-bg); padding: 20px; border-radius: 16px; box-shadow: 0 6px 20px rgba(30,66,46,0.06); }
         
-        /* Encabezado */
+        /* Encabezado Neutro de Demostración */
         .header { text-align: center; margin-bottom: 25px; border-bottom: 1px solid #ECE9E2; padding-bottom: 15px; }
-        .header h1 { font-size: 26px; color: var(--spa-primary); font-weight: 400; letter-spacing: 1px; text-transform: uppercase; }
-        .header p { font-size: 13px; color: var(--text-muted); font-style: italic; margin-top: 4px; }
+        .header h1 { font-size: 22px; color: var(--spa-primary); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header p { font-size: 13px; color: var(--text-muted); font-style: normal; margin-top: 6px; font-weight: 500; }
 
-        /* Promoción del Mes Seleccionable */
-        .promo-card { background: linear-gradient(135deg, var(--spa-primary), #1E422E); padding: 18px; border-radius: 12px; margin-bottom: 25px; color: #fff; text-align: center; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; }
+        /* Tarjeta de Oferta Destacada */
+        .promo-card { background: linear-gradient(135deg, var(--spa-primary), #142D1F); padding: 18px; border-radius: 12px; margin-bottom: 25px; color: #fff; text-align: center; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; }
         .promo-card:hover { border-color: var(--spa-gold); }
-        .promo-card.selected { border: 2px solid var(--spa-gold); box-shadow: 0 4px 15px rgba(212,175,55,0.3); background: linear-gradient(135deg, #1E422E, #142D1F); }
-        .promo-card h3 { font-size: 15px; font-weight: 500; letter-spacing: 2px; color: var(--spa-gold); margin-bottom: 6px; text-transform: uppercase; }
-        .promo-card .service-title { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
-        .promo-card .price { font-size: 22px; font-weight: bold; color: var(--spa-gold); }
-        .promo-card .validity { font-size: 11px; opacity: 0.7; margin-top: 6px; font-weight: 300; }
+        .promo-card.selected { border: 2px solid var(--spa-gold); box-shadow: 0 4px 15px rgba(212,175,55,0.3); background: linear-gradient(135deg, #142D1F, #0B1A12); }
+        .promo-card h3 { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--spa-gold); margin-bottom: 6px; text-transform: uppercase; }
+        .promo-card .service-title { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
+        .promo-card .price { font-size: 20px; font-weight: bold; color: var(--spa-gold); }
+        .promo-card .validity { font-size: 11px; opacity: 0.8; margin-top: 6px; font-weight: 400; }
 
         .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 25px 0 12px 0; color: var(--spa-primary); border-bottom: 1px solid #ECE9E2; padding-bottom: 6px; }
 
@@ -51,7 +51,7 @@
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
         .service-card { border: 1px solid #E2DEC6; border-radius: 10px; overflow: hidden; background: #fff; display: flex; flex-direction: column; cursor: pointer; transition: all 0.2s ease; }
         .service-card:hover { border-color: var(--spa-primary); }
-        .service-card.selected { border: 2px solid var(--spa-primary); background-color: #F6F8F6; box-shadow: 0 4px 12px rgba(44,94,67,0.08); }
+        .service-card.selected { border: 2px solid var(--spa-primary); background-color: #F4F7F5; box-shadow: 0 4px 12px rgba(30,66,46,0.08); }
         
         .service-img-container { width: 100%; height: 110px; background-color: #EAE7DC; position: relative; overflow: hidden; }
         .service-img-container img { width: 100%; height: 100%; object-fit: cover; }
@@ -61,17 +61,16 @@
         .service-meta { font-size: 13px; color: var(--spa-primary); font-weight: 700; margin-top: 6px; display: flex; justify-content: space-between; align-items: center; }
         .service-duration { font-size: 10px; color: var(--text-muted); font-weight: 400; }
 
-        /* Opción de Asesoramiento */
+        /* Botón de Asesoramiento Genérico */
         .custom-option { border: 1px solid #E2DEC6; padding: 14px; border-radius: 10px; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 1px; cursor: pointer; background: #fff; margin-bottom: 25px; color: var(--spa-primary); transition: all 0.2s; text-transform: uppercase; }
-        .custom-option:hover { background-color: #F6F8F6; }
+        .custom-option:hover { background-color: #F4F7F5; }
         .custom-option.selected { border: 2px solid var(--spa-gold); background-color: #FFFDF9; color: var(--spa-dark); }
 
         /* Formulario de Pre-Reserva */
         .form-group { margin-bottom: 14px; }
-        label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 5px; color: var(--spa-dark); text-transform: uppercase; letter-spacing: 0.5px; }
+        label { display: block; font-size: 11px; font-weight: 700; margin-bottom: 5px; color: var(--spa-dark); text-transform: uppercase; letter-spacing: 0.5px; }
         input, select { width: 100%; padding: 12px; border: 1px solid #D4CFC1; border-radius: 8px; font-size: 14px; background: #fff; color: var(--spa-dark); outline: none; transition: border 0.2s; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
         
-        /* Flecha personalizada para el select */
         .select-wrapper { position: relative; }
         .select-wrapper::after { content: '▼'; font-size: 10px; color: var(--spa-primary); position: absolute; right: 15px; top: 16px; pointer-events: none; }
         
@@ -79,20 +78,20 @@
         
         .notice-box { background-color: #F4F2EB; border-left: 3px solid var(--spa-gold); padding: 10px; font-size: 11px; color: var(--spa-dark); margin-bottom: 15px; border-radius: 0 6px 6px 0; line-height: 1.5; }
 
-        /* Botón de WhatsApp */
-        .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background-color: #25D366; color: white; border: none; padding: 15px; font-size: 15px; font-weight: bold; border-radius: 8px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25); margin-top: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
+        /* Botón de WhatsApp Técnico */
+        .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background-color: #25D366; color: white; border: none; padding: 15px; font-size: 14px; font-weight: bold; border-radius: 8px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25); margin-top: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
         .btn-whatsapp:hover { background-color: #128C7E; }
 
-        .policies { font-size: 11px; color: var(--text-muted); margin-top: 25px; padding: 12px; background: #FDFBF7; border: 1px solid #ECE9E2; border-radius: 8px; line-height: 1.5; }
+        .policies { font-size: 11px; color: var(--text-muted); margin-top: 25px; padding: 12px; background: #FFFDF9; border: 1px solid #ECE9E2; border-radius: 8px; line-height: 1.5; }
 
-        /* Ubicación */
+        /* Ubicación Demo */
         .location-section { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ECE9E2; }
-        .location-section p { font-size: 13px; color: var(--spa-dark); font-weight: 500; }
-        .btn-maps { display: inline-block; margin-top: 10px; color: var(--spa-primary); font-size: 12px; font-weight: 700; letter-spacing: 1px; text-decoration: none; border: 1px solid var(--spa-primary); padding: 8px 16px; border-radius: 6px; background: #fff; transition: all 0.2s; text-transform: uppercase; }
+        .location-section p { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+        .btn-maps { display: inline-block; margin-top: 10px; color: var(--spa-primary); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-decoration: none; border: 1px solid var(--spa-primary); padding: 8px 16px; border-radius: 6px; background: #fff; transition: all 0.2s; text-transform: uppercase; }
         .btn-maps:hover { background-color: var(--spa-primary); color: #fff; }
 
         /* MODAL DE IMÁGENES ZOOM */
-        .modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(26,46,34,0.9); justify-content: center; align-items: center; padding: 16px; }
+        .modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17,30,22,0.9); justify-content: center; align-items: center; padding: 16px; }
         .modal img { max-width: 100%; max-height: 75vh; border-radius: 8px; box-shadow: 0 4px 25px rgba(0,0,0,0.5); border: 2px solid var(--spa-gold); }
         .modal-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 36px; font-weight: bold; cursor: pointer; }
     </style>
@@ -102,15 +101,15 @@
 <div class="container">
     
     <div class="header">
-        <h1>Nuestra Belleza Spa</h1>
-        <p>Tu espacio de paz, relajación y bienestar</p>
+        <h1>[ Tu Salón / Spa Aquí ]</h1>
+        <p>Módulo de Reservas Express y Reducción de Fricción Comercial</p>
     </div>
 
     <div class="promo-card" id="card-promo" onclick="selectFromCard('card-promo', 'Oferta Especial: Ritual de Spa Facial Renovador + Masaje - S/ 120.00')">
-        <h3>✦ Oferta del Mes Seleccionable ✦</h3>
+        <h3>✦ Opción Destacada Seleccionable ✦</h3>
         <div class="service-title">Ritual de Spa Facial Renovador + Masaje</div>
         <div class="price">S/ 120.00</div>
-        <div class="validity">Cupos limitados • Válido hasta el 31 de mayo</div>
+        <div class="validity">[Espacio para promociones dinámicas del mes]</div>
     </div>
 
     <div class="section-title">Paso 1: Selecciona tu Tratamiento</div>
@@ -188,7 +187,7 @@
             <label for="servicioSelect">Tratamiento Seleccionado</label>
             <div class="select-wrapper">
                 <select id="servicioSelect" onchange="selectFromDropdown(this.value)" required>
-                    <option value="" disabled selected>-- Selecciona o cambia tu opción aquí --</option>
+                    <option value="" disabled selected>-- Elige una opción arriba o selecciónala aquí --</option>
                     <option value="Oferta Especial: Ritual de Spa Facial Renovador + Masaje - S/ 120.00">✦ Oferta del Mes: Ritual + Masaje — S/ 120.00</option>
                     <option value="Limpieza Facial Profunda - S/ 70.00">Limpieza Facial Profunda — S/ 70.00</option>
                     <option value="Masaje Descontracturante - S/ 80.00">Masaje Descontracturante — S/ 80.00</option>
@@ -225,30 +224,30 @@
         </div>
 
         <div class="notice-box">
-            ✦ <strong>Pre-Reserva:</strong> Tu espacio se encuentra sujeto a verificación de agenda. Te responderemos de inmediato confirmando el horario por chat.
+            ✦ <strong>Pre-Reserva Automatizada:</strong> Los datos ingresados se formatean de manera limpia para estructurar el chat de tu negocio al instante.
         </div>
 
         <button type="button" class="btn-whatsapp" onclick="enviarPreReserva()">
-            Solicitar Reserva por WhatsApp
+            Ver Simulación de Pedido en WhatsApp
         </button>
     </form>
 
     <div class="policies">
-        <strong>Políticas del Salón:</strong><br>
-        • Agradecemos tu puntualidad (tolerancia máxima de 15 min).<br>
-        • Las reservas se validan de forma definitiva tras coordinar el abono de seguridad por el chat.
+        <strong>Políticas del Establecimiento:</strong><br>
+        • Automatización integral: Reduce el intercambio manual de mensajes en un 60%.<br>
+        • Control de Agenda: Recibe datos estructurados antes de abrir el chat.
     </div>
 
     <div class="location-section">
-        <p>📍 Calle Ontario 191, Chorrillos</p>
-        <a href="https://maps.google.com/?q=Calle+Ontario+191,+Chorrillos" target="_blank" class="btn-maps">🗺️ CÓMO LLEGAR EN MAPS</a>
+        <p>[ Zona de Ubicación e Integración con Google Maps ]</p>
+        <a href="https://maps.google.com" target="_blank" class="btn-maps">🗺️ PROBAR DIRECCIÓN EN MAPS</a>
     </div>
 
 </div>
 
 <div class="modal" id="imageModal" onclick="closeModal()">
     <span class="modal-close">×</span>
-    <img id="modalImg" src="" alt="Vista Premium">
+    <img id="modalImg" src="" alt="Vista Demo">
 </div>
 
 <script>
@@ -300,7 +299,7 @@ function enviarPreReserva() {
     const servicio = document.getElementById('servicioSelect').value;
     
     if (!servicio) {
-        alert("Por favor, selecciona un tratamiento o la opción de asesoramiento.");
+        alert("Por favor, selecciona una opción del catálogo de prueba.");
         return;
     }
     if (!form.checkValidity()) {
@@ -311,14 +310,14 @@ function enviarPreReserva() {
     const nombre = document.getElementById('nombre').value;
     const fecha = document.getElementById('fecha').value;
     const hora = document.getElementById('hora').value;
-    const telefonoSpa = "51913642644";
+    const telefonoSpa = "51913642644"; /* Puedes cambiarlo o dejar el tuyo para que vean que te llega a ti la prueba */
     
-    const mensaje = `Hola, acabo de enviar una solicitud desde tu VentaLista:\n\n` +
+    const mensaje = `Hola, acabo de enviar una solicitud de prueba desde la demo de VentaLista:\n\n` +
                     `👤 *Cliente:* ${nombre}\n` +
-                    `💆‍♀️ *Opción:* ${servicio}\n` +
+                    `💆‍♀️ *Opción Seleccionada:* ${servicio}\n` +
                     `📅 *Fecha Tentativa:* ${fecha}\n` +
                     `🕒 *Bloque Horario:* ${hora}\n\n` +
-                    `¿Me confirman si tienen disponibilidad para este turno?`;
+                    `Así es como llegará el pedido listo a tu WhatsApp evitando textos infinitos.`;
 
     window.location.href = `https://api.whatsapp.com/send?phone=${telefonoSpa}&text=${encodeURIComponent(mensaje)}`;
 }
