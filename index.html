@@ -17,43 +17,45 @@
     <link rel="apple-touch-icon" href="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
 
     <style>
-        /* Paleta de Colores Corporativa y Profesional */
+        /* Paleta de Colores Corporativa y Profesional - Rediseñada con Toques Femeninos y Elegantes */
         :root {
-            --spa-primary: #1E422E;   /* Verde Oscuro / Estructura Limpia */
-            --spa-gold: #D4AF37;      /* Oro Suave / Indicador de Selección */
-            --spa-dark: #111E16;      /* Texto de Alta Lectura */
-            --spa-bg: #F9F8F5;        /* Fondo Neutro Minimalista */
-            --spa-card-bg: #FFFFFF;
-            --text-muted: #5A6B5D;
+            --spa-primary: #D47A94;   /* Rosa Viejo / Elegante y Femenino */
+            --spa-primary-dark: #A84E68; /* Rosa Oscuro para gradientes y énfasis */
+            --spa-gold: #E0A96D;      /* Oro Rosado Suave / Indicador de Selección */
+            --spa-dark: #3D2D31;      /* Texto de Alta Lectura en tono Berenjena/Café Oscuro */
+            --spa-bg: #FFF5F6;        /* Fondo Rosa Pálido/Blush Suave */
+            --spa-card-bg: #FFFFFF;   /* Fondo de Tarjeta Limpio */
+            --text-muted: #8E787E;    /* Texto Secundario Suave */
+            --border-light: #F2E3E6;  /* Bordes suaves a tono */
         }
         
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
         body { background-color: var(--spa-bg); color: var(--spa-dark); padding: 12px; display: flex; justify-content: center; }
-        .container { max-width: 480px; width: 100%; background: var(--spa-card-bg); padding: 20px; border-radius: 16px; box-shadow: 0 6px 20px rgba(30,66,46,0.06); }
+        .container { max-width: 480px; width: 100%; background: var(--spa-card-bg); padding: 20px; border-radius: 16px; box-shadow: 0 6px 20px rgba(212,122,148,0.08); }
         
         /* Encabezado Neutro de Demostración */
-        .header { text-align: center; margin-bottom: 25px; border-bottom: 1px solid #ECE9E2; padding-bottom: 15px; }
+        .header { text-align: center; margin-bottom: 25px; border-bottom: 1px solid var(--border-light); padding-bottom: 15px; }
         .header h1 { font-size: 22px; color: var(--spa-primary); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
         .header p { font-size: 13px; color: var(--text-muted); font-style: normal; margin-top: 6px; font-weight: 500; }
 
         /* Tarjeta de Oferta Destacada */
-        .promo-card { background: linear-gradient(135deg, var(--spa-primary), #142D1F); padding: 18px; border-radius: 12px; margin-bottom: 25px; color: #fff; text-align: center; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; }
+        .promo-card { background: linear-gradient(135deg, var(--spa-primary), var(--spa-primary-dark)); padding: 18px; border-radius: 12px; margin-bottom: 25px; color: #fff; text-align: center; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; }
         .promo-card:hover { border-color: var(--spa-gold); }
-        .promo-card.selected { border: 2px solid var(--spa-gold); box-shadow: 0 4px 15px rgba(212,175,55,0.3); background: linear-gradient(135deg, #142D1F, #0B1A12); }
+        .promo-card.selected { border: 2px solid var(--spa-gold); box-shadow: 0 4px 15px rgba(224,169,109,0.3); background: linear-gradient(135deg, var(--spa-primary-dark), #783146); }
         .promo-card h3 { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--spa-gold); margin-bottom: 6px; text-transform: uppercase; }
         .promo-card .service-title { font-size: 17px; font-weight: 600; margin-bottom: 4px; }
         .promo-card .price { font-size: 20px; font-weight: bold; color: var(--spa-gold); }
-        .promo-card .validity { font-size: 11px; opacity: 0.8; margin-top: 6px; font-weight: 400; }
+        .promo-card .validity { font-size: 11px; opacity: 0.9; margin-top: 6px; font-weight: 400; }
 
-        .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 25px 0 12px 0; color: var(--spa-primary); border-bottom: 1px solid #ECE9E2; padding-bottom: 6px; }
+        .section-title { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin: 25px 0 12px 0; color: var(--spa-primary); border-bottom: 1px solid var(--border-light); padding-bottom: 6px; }
 
         /* Catálogo de Servicios */
         .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 15px; }
-        .service-card { border: 1px solid #E2DEC6; border-radius: 10px; overflow: hidden; background: #fff; display: flex; flex-direction: column; cursor: pointer; transition: all 0.2s ease; }
+        .service-card { border: 1px solid var(--border-light); border-radius: 10px; overflow: hidden; background: #fff; display: flex; flex-direction: column; cursor: pointer; transition: all 0.2s ease; }
         .service-card:hover { border-color: var(--spa-primary); }
-        .service-card.selected { border: 2px solid var(--spa-primary); background-color: #F4F7F5; box-shadow: 0 4px 12px rgba(30,66,46,0.08); }
+        .service-card.selected { border: 2px solid var(--spa-primary); background-color: #FFF0F3; box-shadow: 0 4px 12px rgba(212,122,148,0.1); }
         
-        .service-img-container { width: 100%; height: 110px; background-color: #EAE7DC; position: relative; overflow: hidden; }
+        .service-img-container { width: 100%; height: 110px; background-color: #F7EBEF; position: relative; overflow: hidden; }
         .service-img-container img { width: 100%; height: 100%; object-fit: cover; }
         
         .service-info { padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
@@ -62,36 +64,36 @@
         .service-duration { font-size: 10px; color: var(--text-muted); font-weight: 400; }
 
         /* Botón de Asesoramiento Genérico */
-        .custom-option { border: 1px solid #E2DEC6; padding: 14px; border-radius: 10px; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 1px; cursor: pointer; background: #fff; margin-bottom: 25px; color: var(--spa-primary); transition: all 0.2s; text-transform: uppercase; }
-        .custom-option:hover { background-color: #F4F7F5; }
-        .custom-option.selected { border: 2px solid var(--spa-gold); background-color: #FFFDF9; color: var(--spa-dark); }
+        .custom-option { border: 1px solid var(--border-light); padding: 14px; border-radius: 10px; text-align: center; font-size: 12px; font-weight: 700; letter-spacing: 1px; cursor: pointer; background: #fff; margin-bottom: 25px; color: var(--spa-primary); transition: all 0.2s; text-transform: uppercase; }
+        .custom-option:hover { background-color: #FFF0F3; }
+        .custom-option.selected { border: 2px solid var(--spa-gold); background-color: #FFFAF6; color: var(--spa-dark); }
 
         /* Formulario de Pre-Reserva */
         .form-group { margin-bottom: 14px; }
         label { display: block; font-size: 11px; font-weight: 700; margin-bottom: 5px; color: var(--spa-dark); text-transform: uppercase; letter-spacing: 0.5px; }
-        input, select { width: 100%; padding: 12px; border: 1px solid #D4CFC1; border-radius: 8px; font-size: 14px; background: #fff; color: var(--spa-dark); outline: none; transition: border 0.2s; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #EAD5D9; border-radius: 8px; font-size: 14px; background: #fff; color: var(--spa-dark); outline: none; transition: border 0.2s; -webkit-appearance: none; -moz-appearance: none; appearance: none; }
         
         .select-wrapper { position: relative; }
         .select-wrapper::after { content: '▼'; font-size: 10px; color: var(--spa-primary); position: absolute; right: 15px; top: 16px; pointer-events: none; }
         
         input:focus, select:focus { border-color: var(--spa-primary); }
         
-        .notice-box { background-color: #F4F2EB; border-left: 3px solid var(--spa-gold); padding: 10px; font-size: 11px; color: var(--spa-dark); margin-bottom: 15px; border-radius: 0 6px 6px 0; line-height: 1.5; }
+        .notice-box { background-color: #FFF0F3; border-left: 3px solid var(--spa-gold); padding: 10px; font-size: 11px; color: var(--spa-dark); margin-bottom: 15px; border-radius: 0 6px 6px 0; line-height: 1.5; }
 
         /* Botón de WhatsApp Técnico */
-        .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background-color: #25D366; color: white; border: none; padding: 15px; font-size: 14px; font-weight: bold; border-radius: 8px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25); margin-top: 20px; text-transform: uppercase; letter-spacing: 0.5px; }
-        .btn-whatsapp:hover { background-color: #128C7E; }
+        .btn-whatsapp { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; background-color: #E25C80; color: white; border: none; padding: 15px; font-size: 14px; font-weight: bold; border-radius: 8px; cursor: pointer; text-decoration: none; box-shadow: 0 4px 12px rgba(226, 92, 128, 0.25); margin-top: 20px; text-transform: uppercase; letter-spacing: 0.5px; transition: background-color 0.2s; }
+        .btn-whatsapp:hover { background-color: #C14365; }
 
-        .policies { font-size: 11px; color: var(--text-muted); margin-top: 25px; padding: 12px; background: #FFFDF9; border: 1px solid #ECE9E2; border-radius: 8px; line-height: 1.5; }
+        .policies { font-size: 11px; color: var(--text-muted); margin-top: 25px; padding: 12px; background: #FFFAF6; border: 1px solid var(--border-light); border-radius: 8px; line-height: 1.5; }
 
         /* Ubicación Demo */
-        .location-section { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #ECE9E2; }
+        .location-section { text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid var(--border-light); }
         .location-section p { font-size: 12px; color: var(--text-muted); font-weight: 500; }
         .btn-maps { display: inline-block; margin-top: 10px; color: var(--spa-primary); font-size: 11px; font-weight: 700; letter-spacing: 1px; text-decoration: none; border: 1px solid var(--spa-primary); padding: 8px 16px; border-radius: 6px; background: #fff; transition: all 0.2s; text-transform: uppercase; }
         .btn-maps:hover { background-color: var(--spa-primary); color: #fff; }
 
         /* MODAL DE IMÁGENES ZOOM */
-        .modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(17,30,22,0.9); justify-content: center; align-items: center; padding: 16px; }
+        .modal { display: none; position: fixed; z-index: 1000; top: 0; left: 0; width: 100%; height: 100%; background: rgba(61,45,49,0.9); justify-content: center; align-items: center; padding: 16px; }
         .modal img { max-width: 100%; max-height: 75vh; border-radius: 8px; box-shadow: 0 4px 25px rgba(0,0,0,0.5); border: 2px solid var(--spa-gold); }
         .modal-close { position: absolute; top: 20px; right: 20px; color: #fff; font-size: 36px; font-weight: bold; cursor: pointer; }
     </style>
@@ -312,11 +314,18 @@ function enviarPreReserva() {
     const hora = document.getElementById('hora').value;
     const telefonoSpa = "51913642644"; /* Puedes cambiarlo o dejar el tuyo para que vean que te llega a ti la prueba */
     
-    const mensaje = `Hola, acabo de enviar una solicitud de prueba desde la demo de VentaLista:\n\n` +
-                    `👤 *Cliente:* ${nombre}\n` +
-                    `💆‍♀️ *Opción Seleccionada:* ${servicio}\n` +
-                    `📅 *Fecha Tentativa:* ${fecha}\n` +
-                    `🕒 *Bloque Horario:* ${hora}\n\n` +
+    const mensaje = `Hola, acabo de enviar una solicitud de prueba desde la demo de VentaLista:
+
+` +
+                    `👤 *Cliente:* ${nombre}
+` +
+                    `💆‍♀️ *Opción Seleccionada:* ${servicio}
+` +
+                    `📅 *Fecha Tentativa:* ${fecha}
+` +
+                    `🕒 *Bloque Horario:* ${hora}
+
+` +
                     `Así es como llegará el pedido listo a tu WhatsApp evitando textos infinitos.`;
 
     window.location.href = `https://api.whatsapp.com/send?phone=${telefonoSpa}&text=${encodeURIComponent(mensaje)}`;
