@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VentaLista - Módulo Demo Agendamiento</title>
+    
     <!-- Etiquetas Meta Open Graph optimizadas para prospección -->
     <meta property="og:title" content="VentaLista | Demo Automatización WhatsApp">
     <meta property="og:description" content="Tus clientes no deberían preguntar. Deberían comprar.">
-    <meta property="og:image" content="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
-    <meta property="og:image:type" content="image/png">
+    <meta property="og:image" content="https://qrdigital.github.io/dulcecapitas/logospa.jpg">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="300">
     <meta property="og:image:height" content="300">
     <meta property="og:url" content="https://qrdigital.github.io/dulcecapitas/">
     <meta property="og:type" content="website">
-    <link rel="icon" type="image/png" href="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
-    <link rel="apple-touch-icon" href="https://qrdigital.github.io/dulcecapitas/faviconsalonyspa.png">
+    
+    <link rel="icon" type="image/jpeg" href="https://qrdigital.github.io/dulcecapitas/logospa.jpg">
+    <link rel="apple-touch-icon" href="https://qrdigital.github.io/dulcecapitas/logospa.jpg">
 
     <style>
         /* Paleta de Colores Corporativa y Profesional - Rediseñada con Toques Femeninos y Elegantes */
@@ -33,13 +35,47 @@
         body { background-color: var(--spa-bg); color: var(--spa-dark); padding: 12px; display: flex; justify-content: center; }
         .container { max-width: 480px; width: 100%; background: var(--spa-card-bg); padding: 20px; border-radius: 16px; box-shadow: 0 6px 20px rgba(212,122,148,0.08); }
         
-        /* Encabezado Neutro de Demostración */
-        .header { text-align: center; margin-bottom: 25px; border-bottom: 1px solid var(--border-light); padding-bottom: 15px; }
-        .header h1 { font-size: 22px; color: var(--spa-primary); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
-        .header p { font-size: 13px; color: var(--text-muted); font-style: normal; margin-top: 6px; font-weight: 500; }
+        /* Encabezado con Logo y Estilo Elevado */
+        .header { text-align: center; margin-bottom: 25px; border-bottom: 1px solid var(--border-light); padding-bottom: 18px; position: relative; }
+        
+        .demo-badge {
+            display: inline-block;
+            background: #FFF0F3;
+            color: var(--spa-primary-dark);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            margin-bottom: 12px;
+        }
+
+        .logo-container {
+            width: 85px;
+            height: 85px;
+            margin: 0 auto 12px auto;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid var(--spa-gold);
+            box-shadow: 0 4px 12px rgba(212,122,148,0.18);
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .header h1 { font-size: 20px; color: var(--spa-primary); font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase; }
+        .header p { font-size: 12px; color: var(--text-muted); font-style: normal; margin-top: 4px; font-weight: 500; }
 
         /* Tarjeta de Oferta Destacada */
-        .promo-card { background: linear-gradient(135deg, var(--spa-primary), var(--spa-primary-dark)); padding: 18px; border-radius: 12px; margin-bottom: 25px; color: #fff; text-align: center; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; }
+        .promo-card { background: linear-gradient(135deg, var(--spa-primary), var(--spa-primary-dark)); padding: 18px; border-radius: 12px; margin-bottom: 25px; color: #fff; text-align: center; border: 2px solid transparent; cursor: pointer; transition: all 0.2s ease; position: relative; overflow: hidden; }
         .promo-card:hover { border-color: var(--spa-gold); }
         .promo-card.selected { border: 2px solid var(--spa-gold); box-shadow: 0 4px 15px rgba(224,169,109,0.3); background: linear-gradient(135deg, var(--spa-primary-dark), #783146); }
         .promo-card h3 { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; color: var(--spa-gold); margin-bottom: 6px; text-transform: uppercase; }
@@ -103,6 +139,10 @@
 <div class="container">
     
     <div class="header">
+        <span class="demo-badge">VentaLista • Módulo Demo</span>
+        <div class="logo-container">
+            <img src="https://qrdigital.github.io/dulcecapitas/logospa.jpg" alt="Logo Spa">
+        </div>
         <h1>[ Tu Salón / Spa Aquí ]</h1>
         <p>Módulo de Reservas Express y Reducción de Fricción Comercial</p>
     </div>
@@ -253,6 +293,9 @@
 </div>
 
 <script>
+// Evitar selección de fechas pasadas
+document.getElementById('fecha').min = new Date().toISOString().split('T')[0];
+
 const valueToIdMap = {
     "Oferta Especial: Ritual de Spa Facial Renovador + Masaje - S/ 120.00": "card-promo",
     "Limpieza Facial Profunda - S/ 70.00": "card-1",
@@ -312,20 +355,13 @@ function enviarPreReserva() {
     const nombre = document.getElementById('nombre').value;
     const fecha = document.getElementById('fecha').value;
     const hora = document.getElementById('hora').value;
-    const telefonoSpa = "51970519137"; /* Puedes cambiarlo o dejar el tuyo para que vean que te llega a ti la prueba */
+    const telefonoSpa = "519208328884";
     
-    const mensaje = `Hola, acabo de enviar una solicitud de prueba desde la demo de VentaLista:
-
-` +
-                    `👤 *Cliente:* ${nombre}
-` +
-                    `💆‍♀️ *Opción Seleccionada:* ${servicio}
-` +
-                    `📅 *Fecha Tentativa:* ${fecha}
-` +
-                    `🕒 *Bloque Horario:* ${hora}
-
-` +
+    const mensaje = `Hola, acabo de enviar una solicitud de prueba desde la demo de VentaLista:\n\n` +
+                    `👤 *Cliente:* ${nombre}\n` +
+                    `💆‍♀️ *Opción Seleccionada:* ${servicio}\n` +
+                    `📅 *Fecha Tentativa:* ${fecha}\n` +
+                    `🕒 *Bloque Horario:* ${hora}\n\n` +
                     `Así es como llegará el pedido listo a tu WhatsApp evitando textos infinitos.`;
 
     window.location.href = `https://api.whatsapp.com/send?phone=${telefonoSpa}&text=${encodeURIComponent(mensaje)}`;
